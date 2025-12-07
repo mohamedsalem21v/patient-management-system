@@ -27,7 +27,7 @@ public:
         patientQueue.enqueue(p);
         cout << "Patient added: " << p.getName() << endl;
     };
-    void deletePatient(const Patient &p)
+    void deletePatient(int id)
     {
         Patient removedPatient = patientQueue.dequeue();
         if (removedPatient.getId() != 0)
