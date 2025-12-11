@@ -174,7 +174,7 @@ void HospitalSystem::fireDoctor() {}
 void HospitalSystem::searchDoctorByID() {}
 void HospitalSystem::searchDoctorByDepartment() {}
 void HospitalSystem::showDoctorQueue() {} // sanad
-// ================= DOCTOR MANAGEMENT =================
+// ================= General =================
 void HospitalSystem::displayPatients()
 {
     cout << "\n";
@@ -217,6 +217,58 @@ void HospitalSystem::displayPatients()
         waiting.display();
     }
     cout << "\n+==================================================+\n";
+}
+
+void HospitalSystem::displayDoctors()
+{
+    cout << "\n+====================================================================================================+\n";
+    cout << "|                                         DOCTORS TABLE                                              |\n";
+    cout << "+====================================================================================================+\n";
+
+    cout << "| "
+         << left << setw(5) << "ID"
+         << "| " << setw(20) << "Name"
+         << "| " << setw(5) << "Age"
+         << "| " << setw(12) << "Major"
+         << "| " << setw(10) << "Patients"
+         << "| " << setw(17) << "Experience (yrs)"
+         << "| " << setw(12) << "Salary"
+         << "|\n";
+
+    cout << "+----------------------------------------------------------------------------------------------------+\n";
+
+    bool found = false;
+
+    for (auto &[major, doclist] : doctorsByMajor)
+    {
+        ListNode *curr = doclist->getHead();
+
+        while (curr != nullptr)
+        {
+            found = true;
+
+            cout << "| "
+                 << left << setw(5) << curr->doctor.getId()
+                 << "| " << setw(20) << curr->doctor.getName()
+                 << "| " << setw(5) << curr->doctor.getAge()
+                 << "| " << setw(12) << caseTypeTostring(curr->doctor.getCaseType())
+                 << "| " << setw(10) << curr->Patients.getQueueCount()
+                 << "| " << setw(17) << curr->doctor.getYearsOfExperience()
+                 << "| " << setw(12) << curr->doctor.getSal()
+                 << "|\n";
+
+            curr = curr->next;
+        }
+    }
+
+    if (!found)
+    {
+        cout << "|                                   No doctors found in system.                                     |\n";
+    }
+
+    cout << "+====================================================================================================+\n";
+
+    // you can also use display function which on list of doctors but this is more formal
 }
 
 // ================= MAIN MENU & PATIENT MENU & DOCTOR MENU & closing =================
