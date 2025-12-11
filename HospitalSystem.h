@@ -33,18 +33,18 @@ public:
     void searchPatientByID(); // moza
 
     // --- Doctor Management ---
-    void hireDoctor();
-    void fireDoctor();
-    void searchDoctorByID();
-    void searchDoctorByDepartment();
-    void showDoctorQueue(); // sanad
+    void hireDoctor();               // under work
+    void fireDoctor();               // under work
+    void searchDoctorByID();         // under work
+    void searchDoctorByDepartment(); // under work
+    void showDoctorQueue();          // sanad
 
     // Main menu
     void printMainMenu();     // done
     void patientManagement(); // done
     void doctorManagement();  // done
     void printExitScreen();   // done
-    void treatPatient();      // dequeue patient from each queue
+    void treatPatient();      // under work // dequeue patient from each queue
     void patientsCount();     // done // we will iterate on majors
     void doctorsCount();      // done // we will iterate on majors and LinkedList
     void displayPatients();   // done  // here we will display id , name, Major, Doctor
