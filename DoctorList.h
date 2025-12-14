@@ -131,34 +131,34 @@ public:
         }
     }
 
-    Doctor dequeue() // This function deletes a doctor.
-    {
-        if (isEmpty())
-        {
-            cout << "There is no Doctors." << nl;
-            return Doctor();
-        }
-        else
-        {
-            if (head == tail)
-            {
-                Doctor temp = head->doctor;
-                delete head;
-                head = tail = nullptr;
-                DoctorsCount--;
-                return temp;
-            }
-            else
-            {
-                Doctor temp1 = head->doctor;
-                ListNode *temp = head;
-                head = head->next;
-                delete temp;
-                DoctorsCount--;
-                return temp1;
-            }
-        }
-    }
+    // Doctor dequeue() // This function deletes a doctor.
+    // {
+    //     if (isEmpty())
+    //     {
+    //         cout << "There is no Doctors." << nl;
+    //         return Doctor();
+    //     }
+    //     else
+    //     {
+    //         if (head == tail)
+    //         {
+    //             Doctor temp = head->doctor;
+    //             delete head;
+    //             head = tail = nullptr;
+    //             DoctorsCount--;
+    //             return temp;
+    //         }
+    //         else
+    //         {
+    //             Doctor temp1 = head->doctor;
+    //             ListNode *temp = head;
+    //             head = head->next;
+    //             delete temp;
+    //             DoctorsCount--;
+    //             return temp1;
+    //         }
+    //     }
+    // }
 
     void display() // This function display doctors queue
     {
