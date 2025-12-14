@@ -347,8 +347,94 @@ void HospitalSystem::fireDoctor() // fire a doctor with id (Omar Mohamed)
     cout << "+==================================================+\n";
 }
 
-void HospitalSystem::searchDoctorByID() {}
-void HospitalSystem::searchDoctorByDepartment() {}
+void HospitalSystem::searchDoctorByID()
+{
+    cout << "\n";
+    cout << "+==================================================+\n";
+    cout << "|              SEARCH DOCTOR BY ID                 |\n";
+    cout << "+==================================================+\n";
+
+    cout << "Enter Doctor ID to search: ";
+    int id = safe_input_int(1, INT_MAX);
+
+    // 1. Check if ID exists in the global system
+    if (validateId.count(id) == 0)
+    {
+        cout << "\nID " << id << " not found in the system.\n";
+        cout << "+==================================================+\n";
+        return;
+    }
+
+    // 2. Retrieve basic Person info to find their Department (Major)
+    Person p = validateId[id];
+    CaseType ct = p.getCaseType();
+
+    // 3. Search in the specific DoctorList for that department
+    DoctorList *list = doctorsByMajor[ct];
+    ListNode *node = list->SearchById(id);
+
+    if (node != nullptr)
+    {
+        cout << "\n+==================================================+\n";
+        cout << "|               DOCTOR INFORMATION                 |\n";
+        cout << "+==================================================+\n";
+        cout << "ID                 : " << node->doctor.getId() << "\n";
+        cout << "Name               : " << node->doctor.getName() << "\n";
+        cout << "Age                : " << node->doctor.getAge() << "\n";
+        cout << "Department         : " << caseTypeTostring(node->doctor.getCaseType()) << "\n";
+        cout << "Years of Exp       : " << node->doctor.getYearsOfExperience() << "\n";
+        cout << "Salary             : " << node->doctor.getSal() << "\n";
+        cout << "Patients in Queue  : " << node->Patients.getQueueCount() << "\n";
+        cout << "+==================================================+\n";
+    }
+    else
+    {
+        // If the ID exists in validateId but isn't in a DoctorList, it must be a Patient
+        cout << "\nID " << id << " is registered but belongs to a Patient, not a Doctor.\n";
+        cout << "+==================================================+\n";
+    }
+}
+void HospitalSystem::searchDoctorByDepartment()
+{
+    cout << "\n";
+    cout << "+==================================================+\n";
+    cout << "|           SEARCH DOCTORS BY DEPARTMENT           |\n";
+    cout << "+==================================================+\n";
+
+    // 1. Read the department using existing helper
+    CaseType ct = readCaseType();
+
+    DoctorList *list = doctorsByMajor[ct];
+
+    if (list->isEmpty())
+    {
+        cout << "\nNo doctors found in " << caseTypeTostring(ct) << " department.\n";
+        cout << "+==================================================+\n";
+        return;
+    }
+
+    // 2. Display Table Header
+    cout << "\nDoctors in " << caseTypeTostring(ct) << " Department:\n";
+    cout << "+------------------------------------------------------------------------------------+\n";
+    cout << "| " << left << setw(5) << "ID"
+         << "| " << setw(20) << "Name"
+         << "| " << setw(5) << "Age"
+         << "| " << setw(15) << "Experience"
+         << "| " << setw(15) << "Patients Queue" << "|\n";
+    cout << "+------------------------------------------------------------------------------------+\n";
+
+    ListNode *curr = list->getHead();
+    while (curr != nullptr)
+    {
+        cout << "| " << left << setw(5) << curr->doctor.getId()
+             << "| " << setw(20) << curr->doctor.getName()
+             << "| " << setw(5) << curr->doctor.getAge()
+             << "| " << setw(15) << curr->doctor.getYearsOfExperience()
+             << "| " << setw(15) << curr->Patients.getQueueCount() << "|\n";
+        curr = curr->next;
+    }
+    cout << "+------------------------------------------------------------------------------------+\n";
+}
 void HospitalSystem::showDoctorQueue()
 {
     cout << "\n";
