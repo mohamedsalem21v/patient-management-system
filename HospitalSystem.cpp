@@ -6,8 +6,7 @@
 
 // ================= helper functions =================
 
-// reading caseType
-static CaseType readCaseType()
+static CaseType readCaseType() // reading caseType
 {
     cout << "Select Case Type:\n";
     cout << "  1) GENERAL\n";
@@ -30,8 +29,9 @@ static CaseType readCaseType()
         return SURGICAL;
     }
 }
-// this functions to read name with space like -> OMar Adel Youssif
-static string readName()
+
+static string readName() // this functions to read name with space like -> OMar Adel Youssif
+
 {
     string s;
     std::getline(cin, s);
@@ -87,8 +87,7 @@ HospitalSystem::~HospitalSystem() // save memory leak
     }
 }
 
-// reading line like name of patient or doctor
-static string readLineTrimmed()
+static string readLineTrimmed() // reading line like name of patient or doctor
 {
     string s;
     std::getline(cin, s);
@@ -275,6 +274,8 @@ void HospitalSystem::searchPatientByID()
     cout << "+==================================================+\n";
 }
 
+void HospitalSystem::assignWaitingPatient() {}
+
 // ================= DOCTOR MANAGEMENT =================
 void HospitalSystem::hireDoctor() // hire a new doctor (Omar Mohamed)
 {
@@ -398,6 +399,7 @@ void HospitalSystem::searchDoctorByID()
         cout << "+==================================================+\n";
     }
 }
+
 void HospitalSystem::searchDoctorByDepartment()
 {
     cout << "\n";
@@ -439,6 +441,7 @@ void HospitalSystem::searchDoctorByDepartment()
     }
     cout << "+------------------------------------------------------------------------------------+\n";
 }
+
 void HospitalSystem::showDoctorQueue()
 {
     cout << "\n";
@@ -501,7 +504,8 @@ void HospitalSystem::showDoctorQueue()
         }
     }
     cout << "+==================================================+\n";
-} // sanad
+}
+
 // ================= General =================
 void HospitalSystem::displayPatients()
 {
@@ -691,6 +695,7 @@ void HospitalSystem::doctorsCount()
 }
 
 void HospitalSystem::treatPatient() {} // Omar adel
+
 // ================= MAIN MENU & PATIENT MENU & DOCTOR MENU & closing =================
 
 void HospitalSystem::printMainMenu() // welcome menu
@@ -724,7 +729,6 @@ void HospitalSystem::printExitScreen() // exit menu
     cout << "|                                                  |\n";
     cout << "+==================================================+\n";
 }
-
 void HospitalSystem::patientManagement() // this menu to to manage patients
 {
     int choice;
@@ -761,6 +765,10 @@ void HospitalSystem::patientManagement() // this menu to to manage patients
             searchPatientByID();
             break;
 
+        case 4:
+            assignWaitingPatient();
+            break;
+
         case 0:
             return; // go back to main menu
 
@@ -769,7 +777,6 @@ void HospitalSystem::patientManagement() // this menu to to manage patients
         }
     }
 }
-
 void HospitalSystem::doctorManagement() // this to manage doctor
 {
     int choice;
@@ -824,7 +831,6 @@ void HospitalSystem::doctorManagement() // this to manage doctor
         }
     }
 }
-
 void HospitalSystem::run()
 {
     int choice;

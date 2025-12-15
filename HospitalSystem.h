@@ -32,6 +32,7 @@ public:
     void registerPatient();   // done
     void deletePatient();     // done
     void searchPatientByID(); // done
+    void assignWaitingPatient(); // under work
 
     // --- Doctor Management ---
     void hireDoctor();               // done
