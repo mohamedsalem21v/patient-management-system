@@ -358,9 +358,9 @@ void HospitalSystem::hireDoctor() // hire a new doctor (Omar Mohamed)
     cout << "+==================================================+\n";
     cout << "Enter Doctor ID (integer): ";
     int id = safe_input_int(1, INT_MAX);
-    if (validateId.count(id))
+    if (validateId.count(id) && validateId[id].getCaseType() != GENERAL && validateId[id].getCaseType() != EMERGENCY && validateId[id].getCaseType() != ICU && validateId[id].getCaseType() != PEDIATRIC && validateId[id].getCaseType() != SURGICAL)
     {
-        cout << "This Doctor ID already exists! Hired cancelled.\n";
+        cout << "This Doctor ID already exists! Hiring cancelled.\n";
         return;
     }
 
