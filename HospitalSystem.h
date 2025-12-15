@@ -29,27 +29,27 @@ public:
     void run();
 
     // --- Patient Management ---
-    void registerPatient();   // done
-    void deletePatient();     // done
-    void searchPatientByID(); // done
+    void registerPatient();
+    void deletePatient();
+    void searchPatientByID();
 
     // --- Doctor Management ---
-    void hireDoctor();               // done
-    void fireDoctor();               // done
-    void searchDoctorByID();         // done
-    void searchDoctorByDepartment(); // done
-    void showDoctorQueue();          // done
+    void hireDoctor();
+    void fireDoctor();
+    void searchDoctorByID();
+    void searchDoctorByDepartment();
+    void showDoctorQueue();
 
     // Main menu
-    void printMainMenu();     // done
-    void patientManagement(); // done
-    void doctorManagement();  // done
-    void printExitScreen();   // done
-    void treatPatients();      // under work // dequeue patient from each queue
-    void patientsCount();     // done // we will iterate on majors
-    void doctorsCount();      // done // we will iterate on majors and LinkedList
-    void displayPatients();   // done  // here we will display id , name, Major, Doctor
-    void displayDoctors();    // done  // here we will display id , name only
+    void printMainMenu();
+    void patientManagement();
+    void doctorManagement();
+    void printExitScreen();
+    void treatPatients();
+    void patientsCount();
+    void doctorsCount();
+    void displayPatients();
+    void displayDoctors();
 };
 
 #endif

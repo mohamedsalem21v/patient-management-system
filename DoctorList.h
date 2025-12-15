@@ -195,20 +195,6 @@ public:
         return DoctorsCount;
     }
 
-    int  treatPatient()
-    {
-        if (isEmpty())
-            return; // when list is empty (has no doctors)
-        ListNode *cur = getHead();
-        while (cur != nullptr)
-        {
-            if (cur->Patients.getQueueCount() > 0)
-                cur->Patients.dequeue();
-
-            cur = cur->next;
-        }
-    }
-
     void clear()
     {
         while (head != nullptr)

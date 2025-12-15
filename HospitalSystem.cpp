@@ -120,6 +120,7 @@ void HospitalSystem::registerPatient()
     CaseType ct = readCaseType();
 
     Patient p(id, name, age, ct);
+    validateId[id] = p;
 
     DoctorList *list = doctorsByMajor[ct];
 
@@ -157,7 +158,6 @@ void HospitalSystem::registerPatient()
     }
 
     doc->Patients.enqueue(p);
-    validateId[id] = p;
 
     cout << "\nPatient " << p.getName()
          << " assigned to Dr. " << doc->doctor.getName() << "'s queue.\n";
