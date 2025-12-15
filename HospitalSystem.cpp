@@ -132,37 +132,6 @@ void HospitalSystem::registerPatient()
         cout << name << " added to WATTING LIST." << nl;
         return;
     }
-
-    cout << "\n+==================================================+\n";
-    cout << "|         AVAILABLE DOCTORS IN THIS DEPARTMENT     |\n";
-    cout << "+==================================================+\n";
-    ListNode *curr = list->getHead();
-    while (curr != nullptr)
-    {
-        cout << "Doctor ID : " << curr->doctor.getId() << "\n";
-        cout << "Name      : " << curr->doctor.getName() << "\n";
-        cout << "Queue     : " << curr->Patients.getQueueCount() << " waiting\n";
-        cout << "------------------------------------------\n";
-
-        curr = curr->next;
-    }
-    cout << "Enter Doctor ID to assign the patient: ";
-    int choId = safe_input_int(1, INT_MAX);
-    ListNode *doc = list->SearchById(choId);
-
-    if (doc == nullptr)
-    {
-        cout << "Invalid Doctor ID! Patient moved to WAITING LIST.\n";
-        waiting.enqueue(p);
-        return;
-    }
-
-    doc->Patients.enqueue(p);
-
-    cout << "\nPatient " << p.getName()
-         << " assigned to Dr. " << doc->doctor.getName() << "'s queue.\n";
-
-    cout << "+==================================================+\n";
 }
 
 void HospitalSystem::deletePatient()
